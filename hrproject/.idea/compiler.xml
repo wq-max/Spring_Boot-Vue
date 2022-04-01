@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="hrsys_ssm_iframe" />
         <module name="hrsys_ssm" />
+        <module name="hrsys_ssm_ajax" />
       </profile>
     </annotationProcessing>
   </component>
