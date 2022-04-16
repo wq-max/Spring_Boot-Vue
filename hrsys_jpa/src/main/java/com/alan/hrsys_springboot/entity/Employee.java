@@ -21,6 +21,10 @@ public class Employee {
 	@Column
 	private Integer age;
 
+	@ManyToOne(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "dep_id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
+	private Department dep;
+
 	public Integer getId() {
 		return id;
 	}
@@ -61,4 +65,11 @@ public class Employee {
 		this.age = age;
 	}
 
+	public Department getDep() {
+		return dep;
+	}
+
+	public void setDep(Department dep) {
+		this.dep = dep;
+	}
 }

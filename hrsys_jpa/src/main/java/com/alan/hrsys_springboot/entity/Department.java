@@ -1,9 +1,25 @@
 package com.alan.hrsys_springboot.entity;
 
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table
 public class Department {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column
     private String name;
+
+    @Column
     private Integer number;
+
+    /*//@JoinColumn(name = "dep_id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "dep")
+    private List<Employee> emps;*/
 
     public Integer getId() {
         return id;
@@ -29,4 +45,11 @@ public class Department {
         this.name = name;
     }
 
+    /*public List<Employee> getEmps() {
+        return emps;
+    }
+
+    public void setEmps(List<Employee> emps) {
+        this.emps = emps;
+    }*/
 }

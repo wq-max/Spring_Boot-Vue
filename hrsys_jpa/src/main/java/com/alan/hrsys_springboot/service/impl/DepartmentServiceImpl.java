@@ -12,40 +12,40 @@ import java.util.List;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
-	/*@Autowired
+	@Autowired
 	DepartmentDao depDao;
 	@Autowired
-	EmployeeDao empDao;*/
-
+	EmployeeDao empDao;
 	@Override
 	public List<Department> search() {
-		//List<Department> list = depDao.search();
-		return null;
+		List<Department> list = depDao.findAll();
+		return list;
 	}
-
 	@Override
 	public Department searchById(Integer id) {
-		//Department dep = depDao.searchById(id);
-		return null;
+		Department dep = depDao.findById(id).get();
+		return dep;
 	}
-
 	@Override
 	public boolean add(Department dep) {
-		//int rs = depDao.add(dep);
-		return 1 > 0;
+		Department newDep = depDao.save(dep);
+		return newDep != null;
 	}
-
 	@Override
 	public boolean update(Department dep) {
-		//int rs = depDao.update(dep);
-		return 1 > 0;
+		Department newDep = depDao.save(dep);
+		return newDep != null;
 	}
-
 	@Override
 	public boolean delete(Integer id) {
-		//int rs = depDao.delete(id);
-		//rs = empDao.updateByDep(id);
-		return 1 > 0;
+		try {
+			depDao.deleteById(id);
+			empDao.updateByDep(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }

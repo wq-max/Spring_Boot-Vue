@@ -1,9 +1,15 @@
 package com.alan.hrsys_springboot.dao;
 
 import com.alan.hrsys_springboot.entity.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 @Repository
-public interface EmployeeDao {
+public interface EmployeeDao extends JpaRepository<Employee, Integer>, JpaSpecificationExecutor<Employee> {
+    @Modifying
+    @Query("update Employee emp set emp.dep=null where emp.dep.id=:depId")
+    int updateByDep(Integer depId);
 }
