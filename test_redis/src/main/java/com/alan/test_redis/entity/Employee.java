@@ -1,13 +1,20 @@
 package com.alan.test_redis.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+
 import java.io.Serializable;
 
+@RedisHash(value = "employee")
 public class Employee implements Serializable {
+    @Id
     private Integer id;
     private  Integer number;
     private String name;
     private String gender;
     private Integer age;
+
+    private Department dep;
 
     public Integer getId() {
         return id;
@@ -47,6 +54,14 @@ public class Employee implements Serializable {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Department getDep() {
+        return dep;
+    }
+
+    public void setDep(Department dep) {
+        this.dep = dep;
     }
 
     @Override
