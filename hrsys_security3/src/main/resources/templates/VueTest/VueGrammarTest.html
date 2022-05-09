@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueGrammarTest</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div v-html="mes"></div>
+    <div v-if="type=='football'">
+        足球
+    </div>
+    <div v-else-if="type=='basketball'">
+        篮球
+    </div>
+    <div v-else-if="type=='volleyball'">
+        排球
+    </div>
+    <div v-else>
+        无
+    </div>
+    <ul v-for="name in names">
+        <li>{{name}}</li>
+    </ul>
+    <ul v-for="(prop,key,index) in emp">
+        <li>{{prop}} {{key}} {{index}}</li>
+    </ul>
+    <ul>
+        <li v-for="n in 10">
+            {{n}}
+        </li>
+    </ul>
+    <div :class="{'active':isActive}">
+        Hello
+    </div>
+    <div :style="{'color':'blue', 'font-size':'24px'}">
+        Hello
+    </div>
+    <button @click="show">点击</button>
+    <input type="text" v-model="name"><br/>
+    <input type="password" v-model="password"><br/>
+    <input type="radio" name="gender" value="男" v-model="gender">男
+    <input type="radio" name="gender" value="女" v-model="gender">女
+    <input type="checkbox" value="足球" v-model="interests">足球
+    <input type="checkbox" value="篮球" v-model="interests">篮球
+    <input type="checkbox" value="排球" v-model="interests">排球
+    <label>城市</label>
+    <select v-model="city">
+        <option v-for="c in cities">{{c}}</option>
+    </select>
+</div>
+</body>
+<script src="../../static/js/vue.js"></script>
+<script>
+    new Vue({
+        el:'#container',
+        data:{
+            mes:'<h1>Hello</h1>',
+            type:'basketball',
+            names:['王静', '李楠', '周建'],
+            emp:{
+                name:"南洪珠",
+                gender:"女",
+                age:25,
+                job:"记者"
+            },
+            isActive:true,
+            name:"岳绮罗",
+            password:"123",
+            gender: "女",
+            interests:['足球', '排球'],
+            city:'深圳',
+            cities:['北京', '上海', '广州', "深圳", "杭州"]
+        },
+        methods:{
+            show:function () {
+                console.log("hello");
+                this.type='football';
+            }
+        }
+    })
+</script>
+</html>

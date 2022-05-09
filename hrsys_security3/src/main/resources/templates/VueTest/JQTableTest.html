@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQTableTest</title>
+    <script src="../../static/js/jquery.js"></script>
+    <script>
+        $().ready(function () {
+            $("#add").click(function () {
+                let code = $("#code").val();
+                let name = $("#name").val();
+                let str = "<tr><td>" + code + "</td><td>" + name + "</td></tr>";
+                $("table").append(str);
+            })
+            $("#delete").click(function () {
+                $("tr").last().remove();
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="container">
+    <table id="left">
+        <tr>
+            <th>CODE</th>
+            <th>名称</th>
+        </tr>
+    </table>
+    <div id="right">
+        <input type="text" id="code"><br/>
+        <input type="text" id="name"><br/>
+        <input type="button" value="增加" id="add"> <input type="button" value="删除" id="delete">
+    </div>
+</div>
+</body>
+</html>

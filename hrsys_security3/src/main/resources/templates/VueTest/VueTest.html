@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueTest</title>
+    <script src="../../static/js/vue.js"></script>
+</head>
+<body>
+<div id="container">
+    <div v-text="mes"></div>
+    <button v-on:click="change">点击</button>
+</div>
+</body>
+<script>
+    let vue=new Vue({
+        el:"#container",
+        data:{
+            mes:"你好"
+        },
+        methods:{
+            change:function () {
+                this.mes="Hello";
+            }
+        }
+    })
+</script>
+</html>
